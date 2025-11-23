@@ -2,7 +2,7 @@
   "name": "net.narazaka.vrchat.make-udon-asmdef",
   "version": "1.0.0",
   "displayName": "Make Udon Assembly Definition",
-  "description": "Make Udon Assembly Definition",
+  "description": "create asmdef & U# asmdef",
   "author": {
     "name": "Narazaka",
     "url": "https://github.com/Narazaka"
@@ -10,9 +10,8 @@
   "license": "Zlib",
   "type": "tool",
   "url" : "https://github.com/Narazaka/MakeUdonAssemblyDefinition.git",
-  "unity": "2022.3",
+  "unity": "2019.4",
   "vpmDependencies": {
-    "com.vrchat.avatars": ">=3.7.5",
-    "com.vrchat.worlds": ">=3.7.5"
+    "com.vrchat.worlds": ">=3"
   }
 }

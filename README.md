@@ -1,6 +1,6 @@
 # Make Udon Assembly Definition
 
-desc
+create asmdef & U# asmdef
 
 ## Install
 
@@ -16,7 +16,7 @@ https://github.com/Narazaka/MakeUdonAssemblyDefinition/releases/latest から `n
 
 ## Usage
 
-TODO
+Createメニューから「U# + Unity Assembly Definition」を選ぶ
 
 ## License
 

@@ -1,0 +1,20 @@
+{
+    "name": "Narazaka.VRChat.MakeUdonAssemblyDefinition",
+    "rootNamespace": "",
+    "references": [
+        "UdonSharp.Editor",
+        "UdonSharp.Runtime",
+        "UdonSharp.Lib"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
