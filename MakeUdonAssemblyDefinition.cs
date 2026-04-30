@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 namespace Narazaka.VRChat.MakeUdonAssemblyDefinition
 {
@@ -13,30 +14,30 @@ namespace Narazaka.VRChat.MakeUdonAssemblyDefinition
             {
                 path = "Assets";
             }
-            else if (!System.IO.Directory.Exists(path))
+            else if (!Directory.Exists(path))
             {
-                path = System.IO.Path.GetDirectoryName(path);
+                path = Path.GetDirectoryName(path);
             }
-            var asmdefDefaultName = System.IO.Path.GetFileName(path);
-            var asmdefPath = EditorUtility.SaveFilePanelInProject("Save Assembly Definition", asmdefDefaultName, "asmdef", "", path);
+            var asmdefDefaultName = Path.GetFileName(path);
+            var asmdefPath = Path.GetRelativePath(Directory.GetCurrentDirectory(), EditorUtility.SaveFilePanel("Save Assembly Definition", path, asmdefDefaultName, "asmdef"));
             if (string.IsNullOrEmpty(asmdefPath))
             {
                 return;
             }
-            var asmdefName = System.IO.Path.GetFileNameWithoutExtension(asmdefPath);
-            var asmdefDir = System.IO.Path.GetDirectoryName(asmdefPath);
+            var asmdefName = Path.GetFileNameWithoutExtension(asmdefPath);
+            var asmdefDir = Path.GetDirectoryName(asmdefPath);
             var assemblyDef = new AssemblyDefinitionJson()
             {
                 name = asmdefName,
             };
             string json = JsonUtility.ToJson(assemblyDef, true);
-            string filePath = System.IO.Path.Combine(asmdefDir, asmdefName + ".asmdef");
-            System.IO.File.WriteAllText(filePath, json);
+            string filePath = Path.Combine(asmdefDir, asmdefName + ".asmdef");
+            File.WriteAllText(filePath, json);
             AssetDatabase.Refresh();
 
             var udonAsmdef = ScriptableObject.CreateInstance<UdonSharpEditor.UdonSharpAssemblyDefinition>();
             udonAsmdef.sourceAssembly = AssetDatabase.LoadAssetAtPath<UnityEditorInternal.AssemblyDefinitionAsset>(filePath);
-            var udonAsmdefPath = System.IO.Path.Combine(asmdefDir, asmdefName + ".asset");
+            var udonAsmdefPath = Path.Combine(asmdefDir, asmdefName + ".asset");
             AssetDatabase.CreateAsset(udonAsmdef, udonAsmdefPath);
             AssetDatabase.Refresh();
         }
