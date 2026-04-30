@@ -1,6 +1,6 @@
 {
   "name": "net.narazaka.vrchat.make-udon-asmdef",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Make Udon Assembly Definition",
   "description": "create asmdef & U# asmdef",
   "author": {
